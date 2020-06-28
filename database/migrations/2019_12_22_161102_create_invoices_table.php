@@ -18,6 +18,8 @@ class CreateInvoicesTable extends Migration
             $table->integer('user_id');
             $table->integer('tender_id');
             $table->text('invoice');
+            $table->string('status');
+
             $table->timestamps();
         });
     }

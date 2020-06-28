@@ -15,16 +15,21 @@ class CreateInformationTable extends Migration
     {
         Schema::create('information', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('upload_id');
+            $table->integer('user_id');
+            $table->integer('tender_id');
+            $table->integer('upload_id')->nullable();
             $table->string('org_name')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
+            $table->date('duration')->nullable();
+
             $table->string('price')->nullable();
+            $table->string('country')->nullable();
+
             $table->integer('quantity')->nullable();
             $table->text('proposal')->nullable();
             $table->text('terms')->nullable();
+            $table->integer('quantity')->default(0);
 
 
             $table->timestamps();

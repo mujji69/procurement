@@ -17,6 +17,8 @@ class CreateAwardsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('upload_id');
             $table->date('award_date');
+            $table->text('po');
+
             $table->timestamps();
         });
     }
