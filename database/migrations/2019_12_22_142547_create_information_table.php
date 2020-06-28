@@ -29,7 +29,7 @@ class CreateInformationTable extends Migration
             $table->integer('quantity')->nullable();
             $table->text('proposal')->nullable();
             $table->text('terms')->nullable();
-            $table->integer('quantity')->default(0);
+            $table->integer('flag')->default(0);
 
 
             $table->timestamps();
