@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Upload extends Model
 {
    protected $fillable = [
-        'user_id', 'tender_id', 'quotation', 'isSelected', 'quotationText'
+        'user_id', 'tender_id', 'quotation',
     ];
 
     public function users()
@@ -23,6 +23,10 @@ class Upload extends Model
     public function awards()
     {
         return $this->hasOne('App\Award');
+    }
+    public function informations()
+    {
+        return $this->hasOne('App\Information');
     }
 
     public function information()

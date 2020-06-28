@@ -8,12 +8,22 @@ use App\Upload;
 use App\Award;
 use App\Invoice;
 use App\User;
+use App\Information;
+use App\Item;
+use App\Timeline;
+
+
 
 use Illuminate\Support\Facades\DB;
 
 
 class TenderController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
 
     public function index()
     {
@@ -171,15 +181,93 @@ class TenderController extends Controller
     }
 
     public function bids($id){
-        $datas = Upload::get()->where('tender_id',$id);
+        $datas = Upload::where('tender_id',$id)->get();
+        $quotations = Information::where('tender_id',$id)->get();
 
-        return view('admin.bids',compact('datas'));
+        $count = count($quotations);
+
+        // Api
+
+        $set = array();
+
+        for($i=0;$i<$count;$i++){
+
+          if($quotations[$i]->country != 'PKR'){
+
+            $amount = $quotations[$i]->price;
+
+            $apikey = '9c646294659b03db9c71';
+
+            $from_Currency = urlencode($quotations[$i]->country);
+            $to_Currency = urlencode('PKR');
+
+            $query =  "{$from_Currency}_{$to_Currency}";
+
+            // change to the free URL if you're using the free version
+            $json = file_get_contents("https://free.currconv.com/api/v7/convert?q={$query}&compact=ultra&apiKey={$apikey}");
+            // dd($json);
+            $obj = json_decode($json, true);
+
+            $val = $obj["$query"];
+
+            $total = $val * $amount;
+
+            $formatValue = number_format($total, 2, '.', '');
+            
+            $set[$quotations[$i]->upload_id] = $formatValue;
+
+          }
+
+        }
+
+
+        // $data = "$amount $from_Currency = $to_Currency $formatValue";
+
+
+
+        // end Api
+        if(count($datas) <= 1){
+            $recommended = $datas->first();
+
+            return view('admin.bids',compact('datas','recommended'));
+        }
+        if($set != null){
+
+        $index  = array_search(min($set),$set);
+
+        $recommended = Upload::find($index);
+
+        return view('admin.bids',compact('datas','recommended'));
+      }else{
+        $column = array_column($quotations->toArray(),'price');
+
+        $index = array_search(min(array_column($quotations->toArray(),'price')),$column);
+
+        $recommended = Upload::find($quotations[$index]->upload_id);
+
+
+        return view('admin.bids',compact('datas','recommended'));
+      }
+
+
+
     }
+
+    public function quotation_information($id){
+        $data = Information::get()->where('upload_id',$id);
+        $data = $data->first();
+        $items = Item::get()->where('information_id',$data->id);
+        $timelines = Timeline::get()->where('information_id',$data->id);
+
+        return view('admin.quotation_information',compact('data','items','timelines'));
+    }
+
 
     public function selected(Request $request,$id)
     {
        // dd('jani');
         // $data = Upload::find($id);
+
         $tender = Tender::find($request->tender_id);
         $tender->status = 'In-progress';
         $tender->save();
@@ -245,9 +333,18 @@ class TenderController extends Controller
 
     public function changeStatus(Request $request,$id)
     {
-        $tender = Tender::find($id);
-        $tender->status = $request->status;
-        $tender->save();
+        $invoice = Invoice::find($id);
+        $invoice->status = $request->status;
+        $invoice->save();
+
+        return redirect()->back();
+    }
+
+    public function changeStatusTender(Request $request,$id)
+    {
+        $invoice = Tender::find($id);
+        $invoice->status = $request->status;
+        $invoice->save();
 
         return redirect()->back();
     }

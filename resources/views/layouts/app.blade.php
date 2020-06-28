@@ -23,21 +23,17 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/layout_app.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/jquery.dataTables.css') }}" rel="stylesheet">
-    @yield('styles')
-    <style>
-body{
-    background-color:white;
-}
-</style>
+
 
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+  <nav class="navbar navbar-expand-sm shadow-sm">
             <div class="container">
-                <a class="navbar-brand pr-3" style='border-right:1px solid black;' href="{{ url('/') }}">
-                        E-Procurement
+                <a class="navbar-brand pr-3" href="{{ url('/') }}">
+                        <img src="/images/landing/logo.png" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -50,21 +46,21 @@ body{
                    @endif
                    @else
                     <ul class="navbar-nav mr-auto">
-                            <li class='nav-item'>
+                            <!-- <li class='nav-item'>
                                 <a class='nav-link' href="{{ route('home') }}">Home</a>
-                            </li>
+                            </li> -->
 
                             <li class='nav-item'>
-                                <a class='nav-link' href="{{url('tenderlist')}}">Tenders</a>
+                                <a class='nav-link active' href="{{url('tenderlist')}}">Tenders</a>
                             </li>
 
-                            <li class='nav-item'>
+                            <!-- <li class='nav-item'>
                                 <a class='nav-link' href="">About</a>
                             </li>
 
                             <li class='nav-item'>
                                 <a class='nav-link' href="">Contact</a>
-                            </li>
+                            </li> -->
                     </ul>
                     @endguest
                     <!-- Right Side Of Navbar -->
@@ -113,15 +109,29 @@ body{
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+      <main>
+        @yield('content')
+
+      </main>
+
+
+
     <script>
         $(document).ready( function () {
             console.log('jani');
         $('#example').DataTable();
         });
     </script>
+    @yield('login-js')
+    <script src="{{asset('js/landing/owl.carousel.js')}}"></script>
+    <script src="{{asset('js/landing/jquery.nav.js')}}"></script>
+    <script src="{{asset('js/landing/scrolling-nav.js')}}"></script>
+    <script src="{{asset('js/landing/jquery.easing.min.js')}}"></script>
+    <script src="{{asset('js/landing/nivo-lightbox.js')}}"></script>
+    <script src="{{asset('js/landing/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('js/landing/form-validator.min.js')}}"></script>
+    <script src="{{asset('js/landing/contact-form-script.js')}}"></script>
+    <script src="{{asset('js/landing/main.js')}}"></script>
+
 </body>
 </html>

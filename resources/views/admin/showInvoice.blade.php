@@ -23,7 +23,7 @@
                  <td>{{$data->users->org}}</td>
                  <td>{{$data->tenders->name}}</td>
                  <td><a href="/storage/invoices/{{$data->invoice}}" target='_blank' download> <i class='fas fa-download fa-2x'></i></a></td>
-                 <td>{{$data->tenders->status}}</td>
+                 <td>{{$data->status}}</td>
                  <td>
                      @php $n = $n + 1 ;  @endphp
                      <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#my{{$n}}' >change</button>
@@ -41,7 +41,7 @@
                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
                                  </div>
 
-                                 <form action="{{route('changeStatus',$data->tender_id)}}" class='' method='POST' enctype='multipart/form-data'>
+                                 <form action="{{route('changeStatusInvoice',$data->id)}}" class='' method='POST' enctype='multipart/form-data'>
                                  @csrf
                                  <!-- Modal body -->
 
@@ -52,10 +52,10 @@
 
                                          <div class="col-md-6">
                                              <select name="status" id="status" class='form-control'>
-                                             <option></option>
-                                             <option>Active</option>
-                                             <option>Closed</option>
-                                             <option>In-progress</option>
+
+                                             <option>In Transit</option>
+                                             <option>Paid</option>
+
 
 
                                              </select>

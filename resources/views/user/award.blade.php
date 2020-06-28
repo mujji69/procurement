@@ -8,6 +8,7 @@
 
 
 <div class='pt-4 px-4'>
+  <h4>All awards</h4>
   @include('vendorData.awa')
 </div>
 </div>

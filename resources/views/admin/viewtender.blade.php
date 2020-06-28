@@ -87,7 +87,7 @@
        <td>{{$data->publishing_date}}</td>
        <td>{{$data->closing_date}}</td>
        <td>{{$data->category}}</td>
-       <td class=''>@if($data->document != 'no')<a href="/storage/tenders/{{$data->document}}" target='_blank' download> <i class='fas fa-download fa-2x'></i></a>@else No document available @endif</td>
+       <td class=''>@if($data->document != 'no' && $data->document != null)<a href="/storage/tenders/{{$data->document}}" target='_blank' download> <i class='fas fa-download fa-2x'></i></a>@else No document available @endif</td>
        <td>{{$data->responses}} <a href="{{route('admin.bids',$data->id)}}" class='btn btn-sm btn-primary float-right' style='color:white;'>View</a> </td>
        <td>
        <form action="{{ route('admin.tender.destroy', $data->id) }}" method="post">
@@ -112,7 +112,7 @@
       </div>
     </div>
 
-    
+
   </div>
 
 

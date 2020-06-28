@@ -6,6 +6,8 @@
 <div class="content-wrapper">
 
 <div class="px-4 pt-4">
+    <h4>My Quotations</h4>
+
   <table id='myTable' class="table table-bordered" style='table-layout:fixed;overflow-wrap: break-word;'>
         <thead>
             <tr>

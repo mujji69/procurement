@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Dashboard</title>
 
     <!-- Bootstrap core CSS -->
     <!-- <link href="../../dist/css/bootstrap.min.css" rel="stylesheet"> -->
@@ -20,11 +20,14 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+  <script src="{{asset('js/dashboard.js')}}">
+
+  </script>
   </head>
 
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Slick</a>
       <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
@@ -39,7 +42,7 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link" href="{{url('/dash')}}">
                   <span data-feather="home"></span>
                   Dashboard
                 </a>
@@ -76,38 +79,7 @@
               </li>
             </ul>
 
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Saved reports</span>
-              <a class="d-flex align-items-center text-muted" href="#">
-                <span data-feather="plus-circle"></span>
-              </a>
-            </h6>
-            <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Current month
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Last quarter
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Social engagement
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Year-end sale
-                </a>
-              </li>
-            </ul>
+
           </div>
         </nav>
 <!--
@@ -334,6 +306,8 @@
                    ]
                });
            });
+           // menu item
+           
        </script>
     <!-- end -->
 

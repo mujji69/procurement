@@ -21,250 +21,264 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('css/material-kit.css') }}" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="{{ asset('css/demo.css') }}" rel="stylesheet" />
-  </head>
 
-  <body class="landing-page sidebar-collapse">
-    <nav class="navbar fixed-top navbar-expand-lg bg-white" color-on-scroll="100" id="sectionsNav">
-      <div class="container">
-        <div class="navbar-translate">
-          <a class="navbar-brand" href="{{url('/')}}" style="font-family:'Gabriela', serif;font-weight:400;color:#24a0ed; font-size:30px;">
-            Procurement</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav ml-auto">
-            <li class='nav-item'>
-              <a href="{{ route('login') }}" class='pr-5' style='color:#24a0ed;font-size:20px;'>Log In</a>
-           </li>
+    <link rel="shortcut icon" href="/images/img/2.png" type="image/png">
+       <!-- Bootstrap CSS -->
+       <link rel="stylesheet" href="{{asset('css/landing/animate.css')}}">
+       <link rel="stylesheet" href="{{asset('css/landing/LineIcons.css')}}">
+       <link rel="stylesheet" href="{{asset('css/landing/owl.carousel.css')}}">
+       <link rel="stylesheet" href="{{asset('css/landing/owl.theme.css')}}">
+       <link rel="stylesheet" href="{{asset('css/landing/magnific-popup.css')}}">
+       <link rel="stylesheet" href="{{asset('css/landing/nivo-lightbox.css')}}">
+       <link rel="stylesheet" href="{{asset('css/landing/main.css')}}">
+       <link rel="stylesheet" href="{{asset('css/landing/responsive.css')}}">
 
-           <li class='nav-item'>
-              <a href="{{ route('register') }}" class='btn btn-info btn-round' type="button" name="button" style='font-weight:bold;font-size:20px;text-transform:capitalize;'>register</a>
+     </head>
 
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="page-header header-filter" data-parallax="true" style="background-image: url('images/back.jpg')">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <h1 class="title">Your Story Starts With Us.</h1>
-            <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</h4>
-            <br>
-            <a href="{{route('register')}}" class="btn btn-info btn-raised btn-lg">
-              Register
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="main main-raised">
-      <div class="container">
-        <div class="section text-center">
-          <div class="row">
-            <div class="col-md-8 ml-auto mr-auto">
-              <h2 class="title">Let&apos;s talk product</h2>
-              <h5 class="description">This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn&apos;t scroll to get here. Add a button if you want the user to see more.</h5>
-            </div>
-          </div>
-          <div class="features">
-            <div class="row">
-              <div class="col-md-4">
-                <div class="info">
-                  <div class="icon icon-info">
-                    <i class="material-icons">chat</i>
-                  </div>
-                  <h4 class="info-title">Free Chat</h4>
-                  <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="info">
-                  <div class="icon icon-success">
-                    <i class="material-icons">verified_user</i>
-                  </div>
-                  <h4 class="info-title">Verified Users</h4>
-                  <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="info">
-                  <div class="icon icon-danger">
-                    <i class="material-icons">fingerprint</i>
-                  </div>
-                  <h4 class="info-title">Fingerprint</h4>
-                  <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="section text-center">
-          <h2 class="title">Here is our team</h2>
-          <div class="team">
-            <div class="row">
-              <div class="col-md-4">
-                <div class="team-player">
-                  <div class="card card-plain">
-                    <div class="col-md-6 ml-auto mr-auto">
-                      <img src="../assets/img/faces/avatar.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
-                    </div>
-                    <h4 class="card-title">Gigi Hadid
-                      <br>
-                      <small class="card-description text-muted">Model</small>
-                    </h4>
-                    <div class="card-body">
-                      <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
-                        <a href="#">links</a> for people to be able to follow them outside the site.</p>
-                    </div>
-                    <div class="card-footer justify-content-center">
-                      <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
-                      <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-instagram"></i></a>
-                      <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="team-player">
-                  <div class="card card-plain">
-                    <div class="col-md-6 ml-auto mr-auto">
-                      <img src="../assets/img/faces/christian.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
-                    </div>
-                    <h4 class="card-title">Christian Louboutin
-                      <br>
-                      <small class="card-description text-muted">Designer</small>
-                    </h4>
-                    <div class="card-body">
-                      <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
-                        <a href="#">links</a> for people to be able to follow them outside the site.</p>
-                    </div>
-                    <div class="card-footer justify-content-center">
-                      <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
-                      <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="team-player">
-                  <div class="card card-plain">
-                    <div class="col-md-6 ml-auto mr-auto">
-                      <img src="../assets/img/faces/kendall.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
-                    </div>
-                    <h4 class="card-title">Kendall Jenner
-                      <br>
-                      <small class="card-description text-muted">Model</small>
-                    </h4>
-                    <div class="card-body">
-                      <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
-                        <a href="#">links</a> for people to be able to follow them outside the site.</p>
-                    </div>
-                    <div class="card-footer justify-content-center">
-                      <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
-                      <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-instagram"></i></a>
-                      <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="section section-contacts">
-          <div class="row">
-            <div class="col-md-8 ml-auto mr-auto">
-              <h2 class="text-center title">Work with us</h2>
-              <h4 class="text-center description">Divide details about your product or agency work into parts. Write a few lines about each one and contact us about any further collaboration. We will responde get back to you in a couple of hours.</h4>
-              <form class="contact-form">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="bmd-label-floating">Your Name</label>
-                      <input type="email" class="form-control">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="bmd-label-floating">Your Email</label>
-                      <input type="email" class="form-control">
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleMessage" class="bmd-label-floating">Your Message</label>
-                  <textarea type="email" class="form-control" rows="4" id="exampleMessage"></textarea>
-                </div>
-                <div class="row">
-                  <div class="col-md-4 ml-auto mr-auto text-center">
-                    <button class="btn btn-primary btn-raised">
-                      Send Message
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer class="footer footer-default">
-      <div class="container">
-        <nav class="float-left">
-          <ul>
-            <li>
-              <a href="https://www.creative-tim.com">
-                Creative Tim
-              </a>
-            </li>
-            <li>
-              <a href="https://creative-tim.com/presentation">
-                About Us
-              </a>
-            </li>
-            <li>
-              <a href="http://blog.creative-tim.com">
-                Blog
-              </a>
-            </li>
-            <li>
-              <a href="https://www.creative-tim.com/license">
-                Licenses
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div class="copyright float-right">
-          &copy;
-          <script>
-            document.write(new Date().getFullYear())
-          </script>, made with <i class="material-icons">favorite</i> by
-          <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
-        </div>
-      </div>
-    </footer>
-    <!--   Core JS Files   -->
-    <!-- <script src="../assets/js/core/jquery.min.js" type="text/javascript"></script> -->
-    <!-- <script src="../assets/js/core/popper.min.js" type="text/javascript"></script> -->
-    <script src="{{asset('js/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
-    <!-- <script src="../assets/js/plugins/moment.min.js"></script> -->
-    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-    <!-- <script src="../assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script> -->
-    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-    <!-- <script src="../assets/js/plugins/nouislider.min.js" type="text/javascript"></script> -->
-    <!--  Google Maps Plugin    -->
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
-    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
-    <script src="{{asset('js/material-kit.js')}}" type="text/javascript"></script>
-  </body>
+     <body>
 
-  </html>
+       <!-- Header Section Start -->
+       <header id="home" class="hero-area">
+         <div class="overlay">
+           <span></span>
+           <span></span>
+         </div>
+         <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+           <div class="container">
+             <a href="index.html" class="navbar-brand"><img src="images/landing/logo.png" alt=""></a>
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+               <i class="lni-menu"></i>
+             </button>
+             <div class="collapse navbar-collapse" id="navbarCollapse">
+               <ul class="navbar-nav w-100">
+                 <li class="nav-item">
+                   <a class="nav-link page-scroll" href="#home">Home</a>
+                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link page-scroll" href="#services">About</a>
+                 </li>
+
+                 <li class="nav-item">
+                   <a class="nav-link page-scroll" href="#contact">Contact</a>
+                 </li>
+
+               </ul>
+               <ul class="navbar-nav mr-auto w-100 justify-content-end">
+                 <li class="nav-item">
+                   <a class="nav-link page-scroll" href="{{ route('login') }}">Login</a>
+                 </li>
+
+                 <li class="nav-item">
+                   <a class="btn btn-singin" href="{{ route('register') }}">Register</a>
+                 </li>
+               </ul>
+             </div>
+           </div>
+         </nav>
+         <div class="container">
+           <div class="row space-100">
+             <div class="col-lg-6 col-md-12 col-xs-12">
+               <div class="contents">
+                 <h2 class="head-title">Your Story Starts With Us</h2>
+                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                 <div class="header-button">
+                   <a href="{{route('register')}}" class="btn btn-border-filled">Register</a>
+                   <!-- <a href="https://rebrand.ly/slick-ud" rel="nofollow" target="_blank" class="btn btn-border page-scroll">Learn More</a> -->
+                 </div>
+               </div>
+             </div>
+             <!-- <div class="col-lg-6 col-md-12 col-xs-12 p-0">
+               <div class="intro-img">
+                 <img src="images/landing/intro.png" alt="">
+               </div>
+             </div> -->
+           </div>
+         </div>
+       </header>
+       <!-- Header Section End -->
+
+
+
+       <!-- Contact Us Section -->
+       <section id="contact" class="section">
+         <!-- Container Starts -->
+         <div class="container">
+           <!-- Start Row -->
+           <div class="row">
+             <div class="col-lg-12">
+               <div class="contact-text section-header text-center">
+                 <div>
+                   <h2 class="section-title">Get In Touch</h2>
+
+                 </div>
+               </div>
+             </div>
+
+           </div>
+           <!-- End Row -->
+           <!-- Start Row -->
+           <div class="row">
+             <!-- Start Col -->
+             <div class="col-lg-6 col-md-12">
+             <form id="contactForm">
+               <div class="row">
+                 <div class="col-md-6">
+                   <div class="form-group">
+                     <input type="text" class="form-control" id="name" name="name" placeholder="Name" required data-error="Please enter your name">
+                     <div class="help-block with-errors"></div>
+                   </div>
+                 </div>
+                 <div class="col-md-6">
+                   <div class="form-group">
+                     <input type="text" placeholder="Subject" id="msg_subject" class="form-control" name="msg_subject" required data-error="Please enter your subject">
+                     <div class="help-block with-errors"></div>
+                   </div>
+                 </div>
+                 <div class="col-md-6">
+                   <div class="form-group">
+                     <input type="text" class="form-control" id="email" name="email" placeholder="Email" required data-error="Please enter your Email">
+                     <div class="help-block with-errors"></div>
+                   </div>
+                 </div>
+                 <div class="col-md-6">
+                   <div class="form-group">
+                     <input type="text" placeholder="Budget" id="budget" class="form-control" name="budget" required data-error="Please enter your Budget">
+                     <div class="help-block with-errors"></div>
+                   </div>
+                 </div>
+                 <div class="col-md-12">
+                   <div class="form-group">
+                     <textarea class="form-control" id="message"  name="message" placeholder="Write Message" rows="4" data-error="Write your message" required></textarea>
+                     <div class="help-block with-errors"></div>
+                   </div>
+                   <div class="submit-button">
+                     <button class="btn btn-common" id="submit" type="submit">Submit</button>
+                     <div id="msgSubmit" class="h3 hidden"></div>
+                     <div class="clearfix"></div>
+                   </div>
+                 </div>
+               </div>
+             </form>
+             </div>
+             <!-- End Col -->
+             <!-- Start Col -->
+             <div class="col-lg-1">
+
+             </div>
+             <!-- End Col -->
+             <!-- Start Col -->
+             <div class="col-lg-4 col-md-12">
+               <div class="contact-img">
+                 <img src="images/landing/contact/01.png" class="img-fluid" alt="">
+               </div>
+             </div>
+             <!-- End Col -->
+             <!-- Start Col -->
+             <div class="col-lg-1">
+             </div>
+             <!-- End Col -->
+
+           </div>
+           <!-- End Row -->
+         </div>
+       </section>
+       <!-- Contact Us Section End -->
+
+       <!-- Footer Section Start -->
+       <footer>
+         <!-- Footer Area Start -->
+         <section id="footer-Content">
+           <div class="container">
+             <!-- Start Row -->
+             <div class="row">
+
+             <!-- Start Col -->
+               <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-mb-12">
+
+                 <div class="footer-logo">
+                  <img src="images/landing/footer-logo.png" alt="">
+                 </div>
+               </div>
+                <!-- End Col -->
+                 <!-- Start Col -->
+               <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 col-mb-12">
+                 <div class="widget">
+                   <h3 class="block-title">Company</h3>
+                   <ul class="menu">
+                     <li><a href="#">  - About Us</a></li>
+                     <li><a href="#">- Career</a></li>
+                     <li><a href="#">- Blog</a></li>
+                     <li><a href="#">- Press</a></li>
+                   </ul>
+                 </div>
+               </div>
+                <!-- End Col -->
+                 <!-- Start Col -->
+               <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 col-mb-12">
+                 <div class="widget">
+                   <h3 class="block-title">Product</h3>
+                   <ul class="menu">
+                     <li><a href="#">  - Customer Service</a></li>
+                     <li><a href="#">- Enterprise</a></li>
+                     <li><a href="#">- Price</a></li>
+                     <li><a href="#">- Scurity</a></li>
+                     <li><a href="#">- Why SLICK?</a></li>
+                   </ul>
+                 </div>
+               </div>
+                <!-- End Col -->
+                 <!-- Start Col -->
+               <!-- End Col -->
+             </div>
+             <!-- End Row -->
+           </div>
+           <!-- Copyright Start  -->
+
+           <div class="copyright">
+             <div class="container">
+               <!-- Star Row -->
+               <div class="row">
+                 <div class="col-md-12">
+                   <div class="site-info text-center">
+
+                   </div>
+
+                 </div>
+                 <!-- End Col -->
+               </div>
+               <!-- End Row -->
+             </div>
+           </div>
+         <!-- Copyright End -->
+         </section>
+         <!-- Footer area End -->
+
+       </footer>
+       <!-- Footer Section End -->
+
+
+       <!-- Go To Top Link -->
+       <a href="#" class="back-to-top">
+         <i class="lni-chevron-up"></i>
+       </a>
+
+       <!-- Preloader -->
+       <div id="preloader">
+         <div class="loader" id="loader-1"></div>
+       </div>
+       <!-- End Preloader -->
+
+       <!-- jQuery first, then Tether, then Bootstrap JS. -->
+
+       <script src="{{asset('js/landing/owl.carousel.js')}}"></script>
+       <script src="{{asset('js/landing/jquery.nav.js')}}"></script>
+       <script src="{{asset('js/landing/scrolling-nav.js')}}"></script>
+       <script src="{{asset('js/landing/jquery.easing.min.js')}}"></script>
+       <script src="{{asset('js/landing/nivo-lightbox.js')}}"></script>
+       <script src="{{asset('js/landing/jquery.magnific-popup.min.js')}}"></script>
+       <script src="{{asset('js/landing/form-validator.min.js')}}"></script>
+       <script src="{{asset('js/landing/contact-form-script.js')}}"></script>
+       <script src="{{asset('js/landing/main.js')}}"></script>
+
+     </body>
+   </html>

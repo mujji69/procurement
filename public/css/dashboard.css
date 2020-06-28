@@ -98,3 +98,24 @@ body {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
+.nav-item a.selectedclass
+{
+  color:blue;
+
+}
+.details{
+  border-radius: 15px 50px;
+  background-color:white;
+  color:#24a0ed;
+  font-weight:bold;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

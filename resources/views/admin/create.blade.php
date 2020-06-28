@@ -7,7 +7,20 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Add New Tender</div>
+                <div class="card-header">Add New Tender
+                  <div class="btn-toolbar float-right" role="toolbar">
+                      <div class="btn-group" role="group" aria-label="Third group">
+                          <a href="{{ route('formbuilder::forms.create') }}" class="btn btn-primary btn-sm">
+                              <i class="fa fa-plus-circle"></i> Create a New Form
+                          </a>
+<!--
+                          <a href="{{ route('formbuilder::my-submissions.index') }}" class="btn btn-primary btn-sm">
+                              <i class="fa fa-th-list"></i> My Submissions
+                          </a> -->
+                      </div>
+                  </div>
+
+                </div>
 
                 @if ($errors->any())
       <div class="alert alert-danger">
@@ -184,6 +197,10 @@
            var len = 0;
              if(response['data'] != null){
                len = response['data'].length;
+             }else{
+               console.log('khali');
+               $('#vendors').find('option').not(':first').remove();
+               $('#vendors').selectpicker('refresh');
              }
 
              console.log(len);
@@ -197,6 +214,7 @@
                  var option = "<option>"+name+"</option>";
 
                  $("#vendors").append(option).selectpicker('refresh');
+
                }
              }
            }

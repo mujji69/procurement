@@ -14,6 +14,7 @@
 
 
 <div class='pt-4 px-4'>
+  <h4>In-progress Tasks</h4>
 @include('vendorData.prog')
 </div>
 

@@ -8,6 +8,12 @@ use App\User;
 use App\Upload;
 use App\Award;
 use App\Invoice;
+use App\Information;
+use App\Item;
+use App\Timeline;
+use jazmy\FormBuilder\Models\Submission;
+
+
 
 use Illuminate\Support\Facades\DB;
 
@@ -41,10 +47,173 @@ class HomeController extends Controller
         $cate = explode(', ',$services->service);
 
          $datas = Tender::latest()->where('status','Active')->whereIn('category',$cate)->where('flag','0')->paginate(5);
+
          return view('user.tenderList',compact('datas'))
          ->with('i', (request()->input('page',1) -1)*5);
        // return view('user.tenderList');
     }
+    public function search(Request $request){
+      $keyword = $request->keyword;
+      $services = User::find(Auth::id());
+
+      $cate = explode(', ',$services->service);
+
+    $datas = Tender::latest()->where(function ($query) use($keyword) {
+        $query->where('name', 'like', '%' . $keyword . '%')
+           ->orWhere('category', 'like', '%' . $keyword . '%')
+           ->orWhere('publishing_date', 'like', '%' . $keyword . '%')
+           ->orWhere('closing_date', 'like', '%' . $keyword . '%');
+
+      })->where('status','Active')->whereIn('category',$cate)->where('flag','0')->paginate(5);
+      return view('user.tenderList',compact('datas'))
+      ->with('i', (request()->input('page',1) -1)*5)
+      ->with('keyword',$keyword);
+    }
+
+    public function dashboard_tenders()
+    {
+      $services = User::find(Auth::id());
+      $cate = explode(', ',$services->service);
+
+       $datas = Tender::latest()->where('status','Active')->whereIn('category',$cate)->where('flag','0')->
+                          take(3)->get();
+
+       return view('user.dashboard_tenders',compact('datas'));
+
+    }
+
+    public function details($id){
+
+      $check = Upload::where('tender_id',$id)->where('user_id',Auth::id())->get();
+      
+      $submission = Submission::with('user', 'form')
+                          ->where([
+                              'tender_id' => $id,
+
+                          ])
+                          ->first();
+      if($submission != null){
+      $form_headers = $submission->form->getEntriesHeader();
+
+      $c = count($form_headers);
+
+      for($i=0;$i<$c;$i++){
+        if(
+            ($form_headers[$i]['name'] == 'closing_date') ||
+            ($form_headers[$i]['name'] == 'category') ||
+            ($form_headers[$i]['name'] == 'name') ||
+             ($form_headers[$i]['name'] == 'description') ||
+                ($form_headers[$i]['name'] == 'publishing_date'))
+            {
+          unset($form_headers[$i]);
+        }
+
+      }
+    }
+      if($submission != null){
+        $data = Tender::find($id);
+        return view('user.details',compact('data','submission','form_headers','check'));
+      }
+      else{
+        $data = Tender::find($id);
+        return view('user.details',compact('data','check'));
+      }
+
+    }
+
+    public function quotation_form($id){
+      $data = User::find(Auth::id());
+      return view('user.quotation_form',compact('data','id'));
+    }
+
+    public function formSubmit(Request $request, $id){
+
+
+      $data = new Upload;
+      $data->user_id = Auth::id();
+      $data->tender_id = $id;
+      $data->quotation = 'no';
+      $data->save();
+
+      $model = new Information;
+      $model->user_id = Auth::id();
+      $model->tender_id = $id;
+      $model->upload_id = $data->id;
+      $model->org_name = $request->org;
+      $model->address = $request->address;
+      $model->phone = $request->contact;
+      $model->proposal = $request->description;
+      $model->duration = $request->duration;
+      $model->price = $request->amount;
+      $model->country = $request->country;
+      $model->quantity = $request->quantity;
+      $model->terms = $request->terms;
+      $model->flag = 1;
+      $model->save();
+
+      // Items
+
+      $item = $request->item;
+      $price = $request->price;
+      for($count = 0; $count < count($item); $count++)
+      {
+       $data = array(
+        'information_id' => $model->id,
+        'item' => $item[$count],
+        'price'  => $price[$count]
+       );
+       $insert_data[] = $data;
+      }
+
+      if($item[0] != null){
+
+        Item::insert($insert_data);
+
+      }
+
+      // Timelme
+
+      $task = $request->task;
+      $date = $request->date;
+      for($count1 = 0; $count1 < count($task); $count1++)
+      {
+       $data1 = array(
+        'information_id' => $model->id,
+        'task' => $task[$count1],
+        'date'  => $date[$count1]
+       );
+       $insert_data1[] = $data1;
+      }
+
+      if($task[0] != null)
+      {
+        Timeline::insert($insert_data1);
+
+      }
+      // responses
+
+      $datas = Upload::get()->where('tender_id',$id);
+
+      $t_response = count($datas);
+
+      $response = Tender::find($id);
+      $response->responses = $t_response;
+      $response->save();
+
+      // end responses
+
+      $services = User::find(Auth::id());
+      $cate = explode(', ',$services->service);
+
+       $datas = Tender::latest()->where('status','Active')->whereIn('category',$cate)->where('flag','0')->paginate(5);
+       return view('user.tenderList',compact('datas'))
+       ->with('i', (request()->input('page',1) -1)*5);
+
+
+     }
+
+
+
 
     public function submit(Request $request, $id){
 
@@ -66,16 +235,12 @@ class HomeController extends Controller
         else {
             $fileNameToStore = 'no';
         }
-        if($request->has('quotationText')){
-          $text = $request->quotationText;
-        }else{
-          $text = 'empty';
-        }
+
             $model = new Upload;
             $model->user_id = Auth::id();
             $model->tender_id = $id;
             $model->quotation = $fileNameToStore;
-            $model->quotationText = $text;
+
             $model->save();
 
             $datas = Upload::get()->where('tender_id',$id);
@@ -107,6 +272,8 @@ class HomeController extends Controller
        ->get();
 
 // dd($datas);
+
+
 
         return view('user.progress',compact('datas_progress'));
     }
@@ -179,9 +346,16 @@ class HomeController extends Controller
             $model->user_id = Auth::id();
             $model->tender_id = $id;
             $model->invoice = $fileNameToStore;
+            $model->status = 'In Transit';
             $model->save();
 
         return redirect()->back()->with('success','submitted successfully');
+    }
+
+    public function viewInvoices($id){
+      $datas = Invoice::where('tender_id',$id)->where('user_id',Auth::id())->get();
+
+      return view('user.viewInvoice',compact('datas'));
     }
 
 }
